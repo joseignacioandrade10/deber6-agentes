@@ -1,0 +1,55 @@
+{
+  "$comment": "Ilustracion didactica; no es un mensaje A2UI estandar valido.",
+  "catalog_version": "1.0",
+  "component": "Card",
+  "props": {
+    "variant": "elevated",
+    "theme": "warning"
+  },
+  "children": [
+    {
+      "component": "Badge",
+      "props": {
+        "text": "SEVERIDAD CRÍTICA",
+        "variant": "danger"
+      }
+    },
+    {
+      "component": "Text",
+      "props": {
+        "text": "Vulnerabilidad detectada en usuarios.py (Línea 21)"
+      }
+    },
+    {
+      "component": "CodeBlock",
+      "props": {
+        "language": "python",
+        "code": "consulta = \"SELECT * FROM usuarios WHERE nombre = '\" + nombre + \"'\"",
+        "highlight_line": 21
+      }
+    },
+    {
+      "component": "Text",
+      "props": {
+        "text": "Inyección SQL: El parámetro 'nombre' se concatena directamente en la consulta sin parametrización ni sanitización."
+      }
+    },
+    {
+      "component": "Button",
+      "props": {
+        "label": "Solicitar revisión adicional",
+        "variant": "primary",
+        "event": {
+          "name": "pedir_revision",
+          "payload": {
+            "archivo": "usuarios.py",
+            "linea": 21,
+            "tipo_fallo": "SQL_INJECTION",
+            "accion_sugerida": "auditoria_seguridad_profunda"
+          }
+        }
+      }
+    }
+  ]
+}
+
